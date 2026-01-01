@@ -30,14 +30,24 @@ This project strictly follows the technical requirements for a complete web appl
 
 ## 📂 Project Structure
 ```text
-/
-├── backend/            # Spring Boot application
-│   ├── src/main/java/  # Layered logic (Controller, Service, Repository, Entity)
-│   ├── src/main/resources/db/ # SQL Schema documentation
-│   └── src/test/       # JUnit and Integration tests
-└── frontend/           # React.js application
-    ├── src/components/ # Reusable UI components
-    └── src/services/   # Axios API configurations
+Tutoring-Management-System/
+│
+├── backend/                 
+│   ├── src/
+│   │   ├── main/java/       (Controllers, Services, Entities)
+│   │   ├── main/resources/  (application.properties, schema.sql)
+│   │   └── test/            (JUnit tests)
+│   ├── pom.xml              (Maven dependencies)
+│   ├── mvnw                 (Maven Wrapper for Windows/Linux)
+│   ├── mvnw.cmd             (Maven Wrapper for Windows)
+│   
+├── frontend/               
+│   ├── src/                 (Components and App.jsx)
+│   ├── public/              (Images, logos)
+│   ├── package.json         (React Frameworks)
+│   ├── vite.config.js       (Config Vite)
+│   
+└── README.md              
 ```
 ## ⚙️ Local Setup
 To run this project locally, follow these steps:
@@ -66,4 +76,5 @@ Open a new terminal window, navigate to the frontend directory, and start the Re
 cd frontend
 npm install
 npm run dev
+
 ```
