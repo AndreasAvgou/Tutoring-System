@@ -32,8 +32,9 @@ Built with a focus on security and user experience, the system enables education
 * **Testing**: JUnit 5, Mockito
 
 ### Frontend
-* **Library**: React.js 18+
-* **Styling**: Tailwind CSS
+* **Library**: React.js 18+ (Vite)
+* **Styling**: Tailwind CSS, Shadcn UI
+* **Icons**: Lucide React
 * **API Client**: Axios
 
 ## 📂 Project Structure
@@ -86,6 +87,7 @@ npm install
 npm run dev
 
 ```
+
 
 
 
