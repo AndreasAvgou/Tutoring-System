@@ -2,33 +2,56 @@ package com.tutoring.tms.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
+import java.util.List;
+import java.util.ArrayList;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
-/**
- * Entity class representing a Course or Subject.
- * This class establishes a relationship between subjects and the teachers who teach them.
- */
 @Entity
 @Table(name = "courses")
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class Course {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id; // Primary key for the course record.
+    private Long id;
 
-    @Column(nullable = false)
-    private String title; // The name of the course (e.g., Mathematics, Java Programming).
+    private String title;
 
-    private String description; // A detailed description of the course's scope.
+    @Column(name = "day_of_week")
+    private String dayOfWeek;
+
+    @Column(name = "lesson_time")
+    private String lessonTime;
+
+    @ManyToOne
+    @JoinColumn(name = "teacher_id")
+    private Teacher teacher;
+
+    // 1. ΣΧΕΣΗ ΜΕ ΜΑΘΗΤΕΣ (ManyToMany)
+    @ManyToMany(mappedBy = "courses")
+    @JsonIgnore
+    private List<Student> students = new ArrayList<>();
+
+    // 2. ΣΧΕΣΗ ΜΕ ΠΑΡΟΥΣΙΕΣ (Cascade ALL για να σβήνονται αυτόματα)
+    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
+    private List<Attendance> attendances = new ArrayList<>();
 
     /**
-     * Many-to-One Relationship: Multiple courses can be associated with a single teacher.
+     * ΑΠΑΡΑΙΤΗΤΗ ΠΡΟΣΘΗΚΗ:
+     * Αυτή η μέθοδος εκτελείται αυτόματα ΠΡΙΝ τη διαγραφή του Course.
+     * Σπάει τους δεσμούς με τους μαθητές στον πίνακα student_courses.
      */
-    @ManyToOne
-    @JoinColumn(name = "teacher_id", nullable = false)
-    private Teacher teacher; // Reference to the Teacher entity who provides this course.
+    @PreRemove
+    private void removeAssociations() {
+        if (students != null) {
+            for (Student student : students) {
+                student.getCourses().remove(this);
+            }
+        }
+    }
+
+    // Διατήρηση της μεθόδου αν τη χρειάζεσαι για το seeding
+    public void setDescription(String description) {
+    }
 }

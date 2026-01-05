@@ -44,4 +44,11 @@ public class CourseController {
         courseService.deleteCourse(id);
         return ResponseEntity.ok().build();
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Course> updateCourse(@PathVariable Long id, @RequestBody Course courseDetails) {
+        // Σιγουρέψου ότι το payload περιέχει "title" και "teacher: {id: ...}"
+        Course updatedCourse = courseService.updateCourse(id, courseDetails);
+        return ResponseEntity.ok(updatedCourse);
+    }
 }

@@ -4,11 +4,9 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
+import java.util.List;
+import java.util.ArrayList;
 
-/**
- * Entity class representing a Student.
- * One of the core entities required for managing tutoring data.
- */
 @Entity
 @Table(name = "students")
 @Data
@@ -18,13 +16,22 @@ public class Student {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id; // Unique internal identifier for the student.
+    private Long id;
 
     @Column(name = "full_name", nullable = false)
-    private String fullName; // Mandatory field for the student's legal name.
+    private String fullName;
 
     @Column(unique = true)
-    private String email; // Unique email for communication and identification.
+    private String email;
 
-    private String phone; // Contact phone number for administrative purposes.
+    private String phone;
+
+    // --- ΠΡΟΣΘΗΚΗ: Η ΣΥΝΔΕΣΗ ΜΕ ΤΑ ΜΑΘΗΜΑΤΑ ---
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(
+            name = "student_courses",
+            joinColumns = @JoinColumn(name = "student_id"),
+            inverseJoinColumns = @JoinColumn(name = "course_id")
+    )
+    private List<Course> courses = new ArrayList<>();
 }

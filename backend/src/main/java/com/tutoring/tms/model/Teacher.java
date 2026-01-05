@@ -4,10 +4,11 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
+import java.util.List; // <--- ΠΡΟΣΘΗΚΗ: Για να αναγνωρίζει τη λέξη List
+import com.fasterxml.jackson.annotation.JsonIgnore; // <--- ΠΡΟΣΘΗΚΗ: Για την αποφυγή σφαλμάτων στο JSON
 
 /**
  * Entity class representing a Teacher in the Tutoring Management System.
- * It follows the Domain Model design pattern.
  */
 @Entity
 @Table(name = "teachers")
@@ -18,13 +19,28 @@ public class Teacher {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id; // Primary key for the teacher, using auto-increment strategy.
+    private Long id;
 
     @Column(name = "full_name", nullable = false)
-    private String fullName; // Stores the full name of the tutor; mandatory field.
+    private String fullName;
 
-    private String specialty; // The academic field or subject the teacher specializes in.
+    private String specialty;
+
+    private String phone;
 
     @Column(unique = true)
-    private String email; // Unique contact email, used as an identifier for the tutor.
+    private String email;
+
+    @Transient
+    private String username;
+
+    @Transient
+    private String password;
+
+    private String role;
+
+    // Η σχέση με τα μαθήματα
+    @OneToMany(mappedBy = "teacher", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore // <--- ΠΡΟΣΘΗΚΗ: Εμποδίζει το "infinite recursion" (ατέρμονο βρόχο) κατά την αποστολή δεδομένων στη React
+    private List<Course> courses;
 }

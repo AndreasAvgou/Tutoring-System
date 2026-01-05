@@ -41,4 +41,14 @@ public class StudentController {
         studentService.deleteStudent(id); // Delete operation
         return ResponseEntity.ok().build();
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Student> updateStudent(@PathVariable Long id, @RequestBody Student studentDetails) {
+        // Κάλεσε ΜΟΝΟ το service. Αυτό ξέρει να κάνει τη δουλειά.
+        Student updated = studentService.updateStudent(id, studentDetails);
+        return ResponseEntity.ok(updated);
+    }
+
+
+
 }
