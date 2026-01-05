@@ -6,12 +6,15 @@ This full-stack application is a professional solution designed to streamline th
 Built with a focus on security and user experience, the system enables educational organizations to maintain accurate data and improve communication between staff and parents.
 
 
-
 ## 🚀 Key Features & Requirements
-This project strictly follows the technical requirements for a complete web application:
-* **Backend Architecture**: Developed with **Spring Boot** using a layered approach.
-* **Database Management**: Uses **PostgreSQL** with a schema of 4 interconnected tables.
-* **Data Relationships**: Implements Many-to-One and One-to-Many relationships between Teachers, Students, Courses, and Lessons.
+
+* **Advanced Dashboard**: Dynamic charts providing a statistical overview of students, teachers, and active courses.
+* **Role-Based Access Control (RBAC)**:
+   * **Admin**: Full control over the system, user management, and global scheduling.
+   * **Teacher**: Personalized views for their own classes, students, and daily schedules.
+* **Appointment Management System**:
+   * **Internal Agenda**: Staff can manage parent-teacher meetings.
+   * **Public Booking**: A dedicated, non-authenticated page for parents to request meetings.
 * **Testing & Reliability**: Verified with a suite of **JUnit 5** tests for both business logic and data persistence.
 * **Modern Interface**: Features a dynamic frontend built with **React.js** for optimal user experience (UX).
 
@@ -78,5 +81,6 @@ npm install
 npm run dev
 
 ```
+
 
 
