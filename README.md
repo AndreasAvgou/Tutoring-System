@@ -69,6 +69,7 @@ To run this project locally, follow these steps:
 1. Create a **PostgreSQL** database named `tutoring_db`.
 2. Update the `application.properties` file located in `backend/src/main/resources/` with your local database credentials:
    ```properties
+   spring.datasource.url=jdbc:postgresql://localhost:5432/tutoring_db
    spring.datasource.username=your_username
    spring.datasource.password=your_password
    ```
@@ -87,6 +88,7 @@ npm install
 npm run dev
 
 ```
+
 
 
 
