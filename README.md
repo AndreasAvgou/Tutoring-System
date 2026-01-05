@@ -15,13 +15,18 @@ Built with a focus on security and user experience, the system enables education
 * **Appointment Management System**:
    * **Internal Agenda**: Staff can manage parent-teacher meetings.
    * **Public Booking**: A dedicated, non-authenticated page for parents to request meetings.
-* **Testing & Reliability**: Verified with a suite of **JUnit 5** tests for both business logic and data persistence.
-* **Modern Interface**: Features a dynamic frontend built with **React.js** for optimal user experience (UX).
+* **Secure Authentication**:
+    * Password encryption using **BCrypt**.
+    * Functional **Forgot Password** workflow allowing teachers to request a reset from the Admin.
+* **Attendance Tracking**: Digital attendance logs with detailed historical reports for every student.
+* **Modern UI/UX**: Responsive design built with **Tailwind CSS**, featuring **Shadcn UI** components and real-time **Sonner** notifications.
+ 
+## Tech Stack
 
-## 🛠️ Tech Stack
 ### Backend
 * **Language**: Java 25
 * **Framework**: Spring Boot 4.0.1
+* **Security**: Spring Security (Basic Auth + BCrypt)
 * **Database**: PostgreSQL 16+
 * **Persistence**: Spring Data JPA / Hibernate
 * **Testing**: JUnit 5, Mockito
@@ -81,6 +86,7 @@ npm install
 npm run dev
 
 ```
+
 
 
 
