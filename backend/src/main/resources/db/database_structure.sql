@@ -1,40 +1,96 @@
--- 1. Teachers Table: Stores information about the instructors
+-- 1. Teachers Table
 CREATE TABLE IF NOT EXISTS teachers (
     id BIGSERIAL PRIMARY KEY,
     full_name VARCHAR(255) NOT NULL,
+    specialty VARCHAR(100),
+    phone VARCHAR(20),
     email VARCHAR(255) UNIQUE,
-    specialty VARCHAR(100)
+    role VARCHAR(50)
 );
 
--- 2. Students Table: Stores information about the students
-CREATE TABLE IF NOT EXISTS students
-(
+-- 2. Users Table (BCrypt Passwords)
+-- One-to-One with Teachers
+CREATE TABLE IF NOT EXISTS users (
+    id BIGSERIAL PRIMARY KEY,
+    username VARCHAR(255) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL, -- Length 255 for BCrypt hash
+    role VARCHAR(50),
+    teacher_id BIGINT UNIQUE,
+    CONSTRAINT fk_user_teacher FOREIGN KEY (teacher_id) REFERENCES teachers(id) ON DELETE CASCADE
+);
+
+-- 3. Students Table 
+CREATE TABLE IF NOT EXISTS students (
     id BIGSERIAL PRIMARY KEY,
     full_name VARCHAR(255) NOT NULL,
     email VARCHAR(255) UNIQUE,
-    grade_level VARCHAR(50) -- Represents the academic level
+    phone VARCHAR(20)
 );
 
--- 3. Courses Table: Defines subjects and links them to a specific teacher
--- Relationship: Many Courses can be taught by One Teacher (Many-to-One)
-CREATE TABLE IF NOT EXISTS courses
-(
+-- 4. Courses Table 
+-- Many-to-One with Teacher
+CREATE TABLE IF NOT EXISTS courses (
     id BIGSERIAL PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
-    description TEXT,
+    day_of_week VARCHAR(50),
+    lesson_time VARCHAR(50),
     teacher_id BIGINT,
-    CONSTRAINT fk_teacher FOREIGN KEY (teacher_id) REFERENCES teachers(id) ON DELETE SET NULL
+    CONSTRAINT fk_course_teacher FOREIGN KEY (teacher_id) REFERENCES teachers(id) ON DELETE SET NULL
 );
 
--- 4. Lessons Table: Manages appointments between students and courses
--- Relationship: Links Students and Courses (Many-to-One for both)
-CREATE TABLE IF NOT EXISTS lessons (
-    id BIGSERIAL PRIMARY KEY,
-    appointment_date TIMESTAMP NOT NULL,
-    duration_minutes INTEGER,
-    status VARCHAR(50) DEFAULT 'SCHEDULED', -- Status can be SCHEDULED, COMPLETED, or CANCELLED
+-- 5. Student_Courses Table 
+-- Many-to-Many Students and Courses
+CREATE TABLE IF NOT EXISTS student_courses (
     student_id BIGINT,
     course_id BIGINT,
-    CONSTRAINT fk_student FOREIGN KEY (student_id) REFERENCES students(id) ON DELETE CASCADE,
-    CONSTRAINT fk_course FOREIGN KEY (course_id) REFERENCES courses(id) ON DELETE CASCADE
+    PRIMARY KEY (student_id, course_id),
+    CONSTRAINT fk_jt_student FOREIGN KEY (student_id) REFERENCES students(id) ON DELETE CASCADE,
+    CONSTRAINT fk_jt_course FOREIGN KEY (course_id) REFERENCES courses(id) ON DELETE CASCADE
+);
+
+-- 6. Attendance Table
+CREATE TABLE IF NOT EXISTS attendance (
+    id BIGSERIAL PRIMARY KEY,
+    date DATE NOT NULL,
+    present BOOLEAN DEFAULT FALSE,
+    student_id BIGINT,
+    course_id BIGINT,
+    CONSTRAINT fk_attendance_student FOREIGN KEY (student_id) REFERENCES students(id) ON DELETE CASCADE,
+    CONSTRAINT fk_attendance_course FOREIGN KEY (course_id) REFERENCES courses(id) ON DELETE CASCADE
+);
+
+-- 7. Appointments Table
+CREATE TABLE IF NOT EXISTS appointments (
+    id BIGSERIAL PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    notes TEXT,
+    start_date_time TIMESTAMP NOT NULL,
+    end_date_time TIMESTAMP,
+    status VARCHAR(50) DEFAULT 'PENDING', -- PENDING, CONFIRMED, CANCELLED
+    student_id BIGINT,
+    teacher_id BIGINT,
+    CONSTRAINT fk_app_student FOREIGN KEY (student_id) REFERENCES students(id) ON DELETE SET NULL,
+    CONSTRAINT fk_app_teacher FOREIGN KEY (teacher_id) REFERENCES teachers(id) ON DELETE SET NULL
+);
+
+-- 8. Lessons Table
+CREATE TABLE IF NOT EXISTS lessons (
+    id BIGSERIAL PRIMARY KEY,
+    scheduled_time TIMESTAMP NOT NULL,
+    duration_minutes INTEGER,
+    status VARCHAR(50) DEFAULT 'SCHEDULED',
+    course_id BIGINT,
+    student_id BIGINT,
+    CONSTRAINT fk_lesson_course FOREIGN KEY (course_id) REFERENCES courses(id) ON DELETE CASCADE,
+    CONSTRAINT fk_lesson_student FOREIGN KEY (student_id) REFERENCES students(id) ON DELETE CASCADE
+);
+
+-- 9. Settings Table
+CREATE TABLE IF NOT EXISTS settings (
+    id BIGINT PRIMARY KEY DEFAULT 1,
+    institution_name VARCHAR(255),
+    phone VARCHAR(20),
+    email VARCHAR(255),
+    address VARCHAR(255),
+    CONSTRAINT check_single_row CHECK (id = 1) 
 );
