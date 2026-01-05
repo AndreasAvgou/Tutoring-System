@@ -37,7 +37,8 @@ Built with a focus on security and user experience, the system enables education
 * **Icons**: Lucide React
 * **API Client**: Axios
 
-## 📂 Project Structure
+## Project Structure
+
 ```text
 Tutoring-Management-System/
 │
@@ -58,36 +59,46 @@ Tutoring-Management-System/
 │   
 └── README.md              
 ```
-## ⚙️ Local Setup
+
+## Setup
 To run this project locally, follow these steps:
 
 1. **Clone the Repository**:
+
    ```bash
    git clone [https://github.com/AndreasAvgou/Tutoring-Management-System.git](https://github.com/AndreasAvgou/Tutoring-Management-System.git)
    ```
-### 🗄️ Database Setup
+   
+### Database Setup
 1. Create a **PostgreSQL** database named `tutoring_db`.
 2. Update the `application.properties` file located in `backend/src/main/resources/` with your local database credentials:
-   ```properties
+
+    ```properties
    spring.datasource.url=jdbc:postgresql://localhost:5432/tutoring_db
    spring.datasource.username=your_username
    spring.datasource.password=your_password
    ```
-### 🚀 Run the Backend
+    
+### Run the Backend
 Navigate to the backend directory and start the Spring Boot application:
+
 ```bash
 cd backend
 ./mvnw spring-boot:run
 ```
 
-### 💻 Run the Frontend
+The API will be available at http://localhost:8080/api
+
+### Run the Frontend
 Open a new terminal window, navigate to the frontend directory, and start the React development server:
+
 ```bash
 cd frontend
 npm install
 npm run dev
-
 ```
+
+The app will be available at http://localhost:5173
 
 
 
