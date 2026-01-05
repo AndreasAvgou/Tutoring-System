@@ -1,9 +1,9 @@
 # Tutoring Management System (TMS)
 
-## 📝 Project Overview
-This full-stack application is a personal project designed to streamline the management of private tutoring services. It provides a professional solution for organizing student records, teacher specialties, and lesson schedules in one centralized system.
+## Project Overview
+This full-stack application is a professional solution designed to streamline the management of private tutoring services. It centralizes student records, teacher specialties, and lesson schedules into one cohesive system.
 
-The application allows users to perform full **CRUD** operations (Create, Read, Update, Delete), ensuring that all educational data is managed efficiently and accurately.
+Built with a focus on security and user experience, the system enables educational organizations to maintain accurate data and improve communication between staff and parents.
 
 
 
@@ -78,4 +78,5 @@ npm install
 npm run dev
 
 ```
+
 
