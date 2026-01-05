@@ -54,7 +54,7 @@ To run this project locally, follow these steps:
 
 1. **Clone the Repository**:
    ```bash
-   git clone [https://github.com/yourusername/tutoring-management-system.git](https://github.com/yourusername/tutoring-management-system.git)
+   git clone [https://github.com/AndreasAvgou/Tutoring-Management-System.git](https://github.com/AndreasAvgou/Tutoring-Management-System.git)
    ```
 ### 🗄️ Database Setup
 1. Create a **PostgreSQL** database named `tutoring_db`.
@@ -78,3 +78,4 @@ npm install
 npm run dev
 
 ```
+
