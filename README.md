@@ -43,7 +43,7 @@ Tutoring-Management-System/
 │
 ├── backend/                 
 │   ├── src/
-│   │   ├── main/java/       (Controllers, Services, Entities)
+│   │   ├── main/java/       (Controllers, Services, Entities, Security Config)
 │   │   ├── main/resources/  (application.properties, schema.sql)
 │   │   └── test/            (JUnit tests)
 │   ├── pom.xml              (Maven dependencies)
@@ -88,6 +88,7 @@ npm install
 npm run dev
 
 ```
+
 
 
 
