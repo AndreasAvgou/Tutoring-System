@@ -6,7 +6,7 @@ This full-stack application is a professional solution designed to streamline th
 Built with a focus on security and user experience, the system enables educational organizations to maintain accurate data and improve communication between staff and parents.
 
 
-## 🚀 Key Features & Requirements
+## Key Features & Requirements
 
 * **Advanced Dashboard**: Dynamic charts providing a statistical overview of students, teachers, and active courses.
 * **Role-Based Access Control (RBAC)**:
@@ -81,6 +81,7 @@ npm install
 npm run dev
 
 ```
+
 
 
 
