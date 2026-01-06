@@ -30,13 +30,13 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .authorizeHttpRequests(auth -> auth
-                        // 1. Δημόσιο endpoint για την αποστολή ραντεβού από γονείς
+                        // 1. Public endpoint for parents to submit appointments
                         .requestMatchers(HttpMethod.POST, "/api/appointments/public").permitAll()
 
-                        // 2. Δημόσιο endpoint για τη λήψη στοιχείων επικοινωνίας (Settings)
+                        // 2. Public endpoint to retrieve contact details (Settings)
                         .requestMatchers(HttpMethod.GET, "/api/settings/public").permitAll()
 
-                        // 3. ΕΠΙΤΡΕΠΟΥΜΕ ΠΡΟΣΩΡΙΝΑ ΟΛΕΣ ΤΙΣ ΑΛΛΕΣ ΚΛΗΣΕΙΣ
+                        // 3. TEMPORARILY PERMIT ALL OTHER CALLS
                         .anyRequest().permitAll()
                 );
 
@@ -46,7 +46,7 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
-        // Επιτρέπουμε το React (Vite)
+        // Allow React (Vite)
         config.setAllowedOrigins(List.of("http://localhost:5173"));
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         config.setAllowedHeaders(List.of("Authorization", "Content-Type", "Accept"));

@@ -9,8 +9,8 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/**") // Επιτρέπει όλα τα μονοπάτια (API endpoints)
-                .allowedOrigins("http://localhost:5173") // Η διεύθυνση της React
+        registry.addMapping("/**") // Allows all paths (API endpoints)
+                .allowedOrigins("http://localhost:5173") // React address
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                 .allowedHeaders("*");
     }
