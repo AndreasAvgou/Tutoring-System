@@ -9,11 +9,10 @@ import java.util.List;
 
 /**
  * REST Controller for Student API.
- * Provides endpoints for React.js frontend integration.
  */
 @RestController
 @RequestMapping("/api/students")
-@CrossOrigin(origins = "*") // Required for frontend-backend communication
+@CrossOrigin(origins = "*")
 public class StudentController {
 
     @Autowired
@@ -21,12 +20,12 @@ public class StudentController {
 
     @GetMapping
     public List<Student> getAllStudents() {
-        return studentService.findAllStudents(); // Read operation
+        return studentService.findAllStudents();
     }
 
     @PostMapping
     public Student createStudent(@RequestBody Student student) {
-        return studentService.saveStudent(student); // Create/Save operation
+        return studentService.saveStudent(student);
     }
 
     @GetMapping("/{id}")
@@ -38,17 +37,14 @@ public class StudentController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteStudent(@PathVariable Long id) {
-        studentService.deleteStudent(id); // Delete operation
+        studentService.deleteStudent(id);
         return ResponseEntity.ok().build();
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Student> updateStudent(@PathVariable Long id, @RequestBody Student studentDetails) {
-        // Κάλεσε ΜΟΝΟ το service. Αυτό ξέρει να κάνει τη δουλειά.
+        // Delegate operation ONLY to the service layer.
         Student updated = studentService.updateStudent(id, studentDetails);
         return ResponseEntity.ok(updated);
     }
-
-
-
 }

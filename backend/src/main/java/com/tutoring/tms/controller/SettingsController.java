@@ -13,13 +13,13 @@ public class SettingsController {
     @Autowired
     private SettingsService settingsService;
 
-    // Δημόσιο endpoint για το React PublicBookingPage
+    // Public endpoint for React PublicBookingPage
     @GetMapping("/public")
     public Settings getPublicSettings() {
         return settingsService.getSettings();
     }
 
-    // Endpoint για τον Admin (για να αλλάζει τις ρυθμίσεις)
+    // Endpoint for Admin
     @PostMapping
     public Settings updateSettings(@RequestBody Settings settings) {
         return settingsService.saveSettings(settings);

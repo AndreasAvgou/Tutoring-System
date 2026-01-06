@@ -47,7 +47,7 @@ public class CourseController {
 
     @PutMapping("/{id}")
     public ResponseEntity<Course> updateCourse(@PathVariable Long id, @RequestBody Course courseDetails) {
-        // Σιγουρέψου ότι το payload περιέχει "title" και "teacher: {id: ...}"
+        // Ensure that the payload contains "title" and "teacher: {id: ...}"
         Course updatedCourse = courseService.updateCourse(id, courseDetails);
         return ResponseEntity.ok(updatedCourse);
     }

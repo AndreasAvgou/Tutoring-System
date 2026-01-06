@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/appointments")
-@CrossOrigin(origins = "*") // Επιτρέπει την επικοινωνία με το React
+@CrossOrigin(origins = "*") // Allows interaction with React
 public class AppointmentController {
 
     @Autowired
@@ -31,13 +31,14 @@ public class AppointmentController {
         appointmentService.delete(id);
     }
 
-    // Αυτό το endpoint θα είναι η "δημόσια είσοδος" για τους γονείς
+    // Public entry endpoint for parents/external bookings
     @PostMapping("/public")
     public Appointment createPublicAppointment(@RequestBody Appointment appointment) {
-        // Θέτουμε πάντα την κατάσταση σε PENDING για να το εγκρίνει ο Admin μετά
+        // Status is always set to PENDING for subsequent Admin approval
         appointment.setStatus(AppointmentStatus.PENDING);
-        // Επειδή είναι δημόσιο, ο γονέας δεν ξέρει το student_id,
-        // οπότε το πεδίο "notes" θα περιέχει το όνομα και το τηλέφωνό του.
+
+        // Since it's public, the 'notes' field will contain contact details
+        // as the parent might not have a student_id linked yet.
         return appointmentService.save(appointment);
     }
 }
