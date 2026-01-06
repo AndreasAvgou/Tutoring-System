@@ -15,14 +15,14 @@ public class AttendanceService {
     private AttendanceRepository attendanceRepository;
 
     /**
-     * Επιστρέφει το ιστορικό παρουσιών ενός συγκεκριμένου μαθητή.
+     * Returns the attendance history for a specific student.
      */
     public List<Attendance> findByStudentId(Long studentId) {
         return attendanceRepository.findByStudentId(studentId);
     }
 
     /**
-     * Αποθηκεύει μια λίστα από παρουσίες (μαζική καταγραφή για ένα τμήμα).
+     * Saves a list of attendances (batch logging for a class session).
      */
     @Transactional
     public void saveAll(List<Attendance> attendances) {
@@ -30,7 +30,7 @@ public class AttendanceService {
     }
 
     /**
-     * Διαγράφει παρουσίες βάσει ημερομηνίας και μαθήματος (αν χρειαστεί διόρθωση).
+     * Deletes attendance records based on date and course ID (for corrections).
      */
     @Transactional
     public void deleteByDateAndCourseId(java.time.LocalDate date, Long courseId) {

@@ -19,14 +19,14 @@ public class UserService {
     private PasswordEncoder passwordEncoder;
 
     /**
-     * Εύρεση χρήστη βάσει username (χρησιμοποιείται στο Login).
+     * Finds a user by username (used during the Login process).
      */
     public Optional<User> findByUsername(String username) {
         return userRepository.findByUsername(username);
     }
 
     /**
-     * Επαναφορά κωδικού (Reset Password).
+     * Resets the user's password.
      */
     @Transactional
     public void updatePassword(Long userId, String newPassword) {
@@ -37,7 +37,7 @@ public class UserService {
     }
 
     /**
-     * Έλεγχος αν υπάρχει ήδη το username στη βάση.
+     * Checks if a username already exists in the database.
      */
     public boolean existsByUsername(String username) {
         return userRepository.existsByUsername(username);

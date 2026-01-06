@@ -8,15 +8,16 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * Service class for Lesson/Appointment management.
- * This class coordinates the core feature of scheduling.
+ * Service coordinating core scheduling features for scheduled sessions.
  */
 @Service
 public class LessonService {
 
     @Autowired
-    private LessonRepository lessonRepository; // layer for appointments
+    private LessonRepository lessonRepository;
 
+    /** * Returns all scheduled lesson sessions.
+     */
     public List<Lesson> findAllLessons() {
         return lessonRepository.findAll();
     }
@@ -25,14 +26,15 @@ public class LessonService {
         return lessonRepository.findById(id);
     }
 
-    /**
-     * Schedules a new lesson or updates an existing one.
+    /** * Registers a new lesson session or updates an existing schedule.
      */
     public Lesson saveLesson(Lesson lesson) {
         return lessonRepository.save(lesson);
     }
 
+    /** * Cancels/Deletes a lesson entry from the calendar.
+     */
     public void deleteLesson(Long id) {
-        lessonRepository.deleteById(id); // Cancels/Deletes a lesson entry
+        lessonRepository.deleteById(id);
     }
 }

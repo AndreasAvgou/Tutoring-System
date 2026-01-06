@@ -20,7 +20,6 @@ public class CourseService {
     @Autowired
     private CourseRepository courseRepository;
 
-    // ΠΡΟΣΘΗΚΗ: Πρέπει να κάνουμε inject και το TeacherRepository
     @Autowired
     private TeacherRepository teacherRepository;
 
@@ -49,7 +48,7 @@ public class CourseService {
         course.setDayOfWeek(details.getDayOfWeek());
         course.setLessonTime(details.getLessonTime());
 
-        // Σύνδεση με τον καθηγητή (Πλέον το teacherRepository αναγνωρίζεται!)
+        // Linking with the teacher
         if (details.getTeacher() != null && details.getTeacher().getId() != null) {
             Teacher teacher = teacherRepository.findById(details.getTeacher().getId())
                     .orElseThrow(() -> new RuntimeException("Teacher not found"));

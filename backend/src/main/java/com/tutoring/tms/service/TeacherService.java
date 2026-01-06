@@ -8,106 +8,62 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.List;
 import java.util.Optional;
 
 @Service
 public class TeacherService {
-
     @Autowired
     private TeacherRepository teacherRepository;
-
     @Autowired
     private UserRepository userRepository;
-
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    /**
-     * Επιστρέφει όλους τους καθηγητές.
-     */
-    public List<Teacher> findAllTeachers() {
-        return teacherRepository.findAll();
-    }
+    public List<Teacher> findAllTeachers() { return teacherRepository.findAll(); }
 
-    /**
-     * Εύρεση καθηγητή βάσει ID.
+    /** * Retrieves a single teacher by their ID.
      */
-    public Optional<Teacher> findTeacherById(Long id) {
-        return teacherRepository.findById(id);
-    }
+    public Optional<Teacher> findTeacherById(Long id) { return teacherRepository.findById(id); }
 
-    /**
-     * CREATE: Αποθηκεύει τον καθηγητή και δημιουργεί αυτόματα λογαριασμό χρήστη (User).
+    /** * Persists a teacher entity and automatically creates a corresponding security User account.
+     * Forces the ID to null to ensure an INSERT operation.
      */
     @Transactional
     public Teacher saveTeacher(Teacher teacher) {
-        // ΑΥΤΟ ΕΙΝΑΙ ΤΟ ΚΛΕΙΔΙ:
-        // Αν έρθει ID από τη React για ΝΕΑ εγγραφή, το μηδενίζουμε
-        // για να καταλάβει η Hibernate ότι πρέπει να κάνει INSERT και όχι UPDATE.
         if (teacher.getId() != null) {
             teacher.setId(null);
         }
+        Teacher saved = teacherRepository.save(teacher);
 
-        if (teacher.getUsername() == null || teacher.getPassword() == null) {
-            throw new RuntimeException("Username and Password are required!");
-        }
-
-        Teacher savedTeacher = teacherRepository.save(teacher);
-
+        // Creating the security credentials for the teacher
         User user = new User();
         user.setUsername(teacher.getUsername());
         user.setPassword(passwordEncoder.encode(teacher.getPassword()));
         user.setRole("ROLE_TEACHER");
-        user.setTeacher(savedTeacher);
+        user.setTeacher(saved);
         userRepository.save(user);
 
-        return savedTeacher;
+        return saved;
     }
 
-    /**
-     * UPDATE: Ενημερώνει τα στοιχεία και τον κωδικό αν έχει αλλάξει.
+    /** * Deletes a teacher and their associated user account to maintain referential integrity.
+     */
+    @Transactional
+    public void deleteTeacher(Long id) {
+        userRepository.deleteByTeacherId(id); // Clean up user credentials first
+        teacherRepository.deleteById(id);
+    }
+
+    /** * Updates existing teacher profile details.
      */
     @Transactional
     public Teacher updateTeacher(Long id, Teacher details) {
-        Teacher teacher = teacherRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Teacher not found"));
-
+        Teacher teacher = teacherRepository.findById(id).orElseThrow(() -> new RuntimeException("Teacher not found"));
         teacher.setFullName(details.getFullName());
         teacher.setEmail(details.getEmail());
         teacher.setPhone(details.getPhone());
         teacher.setSpecialty(details.getSpecialty());
-        teacher.setUsername(details.getUsername());
-
-        // Ενημέρωση κωδικού μόνο αν έχει γραφτεί κάτι νέο
-        if (details.getPassword() != null && !details.getPassword().isEmpty()) {
-            teacher.setPassword(details.getPassword());
-        }
-
         return teacherRepository.save(teacher);
-    }
-
-    /**
-     * DELETE: Διαγράφει τον καθηγητή, τον User και τα συνδεδεμένα μαθήματα.
-     */
-    @Transactional
-    public void deleteTeacher(Long id) {
-        // 1. Εύρεση του καθηγητή
-        Teacher teacher = teacherRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Teacher not found with id: " + id));
-
-        // 2. Διαγραφή του User (Login account) πρώτα
-        userRepository.deleteByTeacherId(id);
-
-        // 3. Σπάσιμο της σύνδεσης με τα Μαθήματα
-        // Λόγω του orphanRemoval = true στο Model, το clear() θα διαγράψει τα μαθήματα από τη βάση.
-        if (teacher.getCourses() != null) {
-            teacher.getCourses().clear();
-            teacherRepository.save(teacher); // Ενημέρωση για να εκτελεστούν οι διαγραφές των μαθημάτων
-        }
-
-        // 4. Οριστική διαγραφή του καθηγητή
-        teacherRepository.delete(teacher);
     }
 }

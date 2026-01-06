@@ -12,24 +12,24 @@ public class SettingsService {
     private SettingsRepository repository;
 
     /**
-     * Επιστρέφει τις ρυθμίσεις (πάντα με ID 1).
-     * Αν δεν υπάρχουν, επιστρέφει ένα αντικείμενο με προεπιλεγμένες τιμές.
+     * Returns system settings (always using ID 1).
+     * If no settings exist, it returns an object with default values.
      */
     public Settings getSettings() {
         return repository.findById(1L).orElseGet(() -> {
             Settings defaultSettings = new Settings();
             defaultSettings.setId(1L);
-            defaultSettings.setInstitutionName("TMS Φροντιστήριο");
+            defaultSettings.setInstitutionName("TMS Tutoring Center");
             defaultSettings.setPhone("210 0000000");
             defaultSettings.setEmail("info@tms.gr");
-            defaultSettings.setAddress("Διεύθυνση 123, Πόλη");
+            defaultSettings.setAddress("123 Address St, City");
             return defaultSettings;
         });
     }
 
     /**
-     * Αποθηκεύει ή ενημερώνει τις ρυθμίσεις.
-     * Επιβάλλει το ID 1 για να έχουμε μόνο μία εγγραφή στη βάση.
+     * Saves or updates system settings.
+     * Enforces ID 1 to ensure only one settings record exists in the database.
      */
     public Settings saveSettings(Settings settings) {
         settings.setId(1L);
