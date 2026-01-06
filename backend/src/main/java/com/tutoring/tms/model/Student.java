@@ -26,7 +26,7 @@ public class Student {
 
     private String phone;
 
-    // --- ΠΡΟΣΘΗΚΗ: Η ΣΥΝΔΕΣΗ ΜΕ ΤΑ ΜΑΘΗΜΑΤΑ ---
+    // --- RELATIONSHIP: Connection with Courses via Junction Table ---
     @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(
             name = "student_courses",

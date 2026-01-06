@@ -12,7 +12,7 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class Settings {
     @Id
-    private Long id = 1L; // Χρησιμοποιούμε πάντα το ID 1 για τις γενικές ρυθμίσεις
+    private Long id = 1L; // Always use ID 1 for global system settings
 
     private String institutionName;
     private String phone;

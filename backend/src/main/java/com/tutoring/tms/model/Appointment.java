@@ -5,20 +5,25 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 import java.time.LocalDateTime;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
+/**
+ * Entity for managing appointments.
+ * Cascade delete is enabled to prevent deletion blocks from parents.
+ */
 @Entity
 @Table(name = "appointments")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Appointment {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false)
-    private String title; // π.χ. "Ενημέρωση Γονέων"
+    private String title;
 
     @Column(columnDefinition = "TEXT")
     private String notes;
@@ -32,13 +37,13 @@ public class Appointment {
     @Enumerated(EnumType.STRING)
     private AppointmentStatus status = AppointmentStatus.PENDING;
 
-    // Σύνδεση με Μαθητή
     @ManyToOne
     @JoinColumn(name = "student_id")
+    @OnDelete(action = OnDeleteAction.CASCADE) // Fixes student deletion
     private Student student;
 
-    // Σύνδεση με Καθηγητή (ή Διευθυντή)
     @ManyToOne
     @JoinColumn(name = "teacher_id")
+    @OnDelete(action = OnDeleteAction.CASCADE) // Fixes teacher deletion
     private Teacher teacher;
 }

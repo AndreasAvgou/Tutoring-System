@@ -27,20 +27,19 @@ public class Course {
     @JoinColumn(name = "teacher_id")
     private Teacher teacher;
 
-    // 1. ΣΧΕΣΗ ΜΕ ΜΑΘΗΤΕΣ (ManyToMany)
+    // 1. RELATIONSHIP WITH STUDENTS (ManyToMany)
     @ManyToMany(mappedBy = "courses")
     @JsonIgnore
     private List<Student> students = new ArrayList<>();
 
-    // 2. ΣΧΕΣΗ ΜΕ ΠΑΡΟΥΣΙΕΣ (Cascade ALL για να σβήνονται αυτόματα)
+    // 2. RELATIONSHIP WITH ATTENDANCE (Cascade ALL for automatic deletion)
     @OneToMany(mappedBy = "course", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnore
     private List<Attendance> attendances = new ArrayList<>();
 
     /**
-     * ΑΠΑΡΑΙΤΗΤΗ ΠΡΟΣΘΗΚΗ:
-     * Αυτή η μέθοδος εκτελείται αυτόματα ΠΡΙΝ τη διαγραφή του Course.
-     * Σπάει τους δεσμούς με τους μαθητές στον πίνακα student_courses.
+     * Triggered automatically BEFORE the deletion of a Course.
+     * Breaks associations with students in the student_courses junction table.
      */
     @PreRemove
     private void removeAssociations() {
@@ -51,7 +50,7 @@ public class Course {
         }
     }
 
-    // Διατήρηση της μεθόδου αν τη χρειάζεσαι για το seeding
+    // Retained for seeding purposes if needed
     public void setDescription(String description) {
     }
 }

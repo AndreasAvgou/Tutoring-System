@@ -4,8 +4,8 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
-import java.util.List; // <--- ΠΡΟΣΘΗΚΗ: Για να αναγνωρίζει τη λέξη List
-import com.fasterxml.jackson.annotation.JsonIgnore; // <--- ΠΡΟΣΘΗΚΗ: Για την αποφυγή σφαλμάτων στο JSON
+import java.util.List;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * Entity class representing a Teacher in the Tutoring Management System.
@@ -39,8 +39,8 @@ public class Teacher {
 
     private String role;
 
-    // Η σχέση με τα μαθήματα
+    // Relationship with courses
     @OneToMany(mappedBy = "teacher", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonIgnore // <--- ΠΡΟΣΘΗΚΗ: Εμποδίζει το "infinite recursion" (ατέρμονο βρόχο) κατά την αποστολή δεδομένων στη React
+    @JsonIgnore // Prevents infinite recursion during JSON serialization to React
     private List<Course> courses;
 }

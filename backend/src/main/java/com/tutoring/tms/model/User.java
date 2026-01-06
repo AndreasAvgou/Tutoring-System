@@ -14,7 +14,7 @@ public class User {
     @Column(unique = true, nullable = false)
     private String username;
 
-    // ΣΗΜΑΝΤΙΚΟ: length = 255 για να χωράει το hash του BCrypt
+    // IMPORTANT: Length 255 to accommodate BCrypt hash strings
     @Column(nullable = false, length = 255)
     private String password;
 
