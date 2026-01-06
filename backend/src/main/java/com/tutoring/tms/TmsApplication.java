@@ -17,7 +17,7 @@ public class TmsApplication {
 	@Bean
 	CommandLineRunner initDatabase(UserRepository userRepository, PasswordEncoder passwordEncoder) {
 		return args -> {
-			// ΕΛΕΓΧΟΣ: Αν υπάρχει ήδη έστω και ένας χρήστης, ΜΗΝ σβήνεις τίποτα
+			// CHECK: If at least one user already exists, do NOT overwrite or delete anything.
 			if (userRepository.count() == 0) {
 				System.out.println(">>> DATABASE IS EMPTY. INITIALIZING ADMIN...");
 
