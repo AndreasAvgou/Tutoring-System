@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" fill="none">
+  <title>Tutoring System Logo - Growth</title>
+  <path d="M10 54 C 10 54, 22 50, 32 50 C 42 50, 54 54, 54 54 V 26 C 54 26, 42 22, 32 22 C 22 22, 10 26, 10 26 Z" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+  <path d="M32 50 V 22" stroke="#2563eb" stroke-width="2"/>
+  <path d="M22 36 L 22 18" stroke="#10b981" stroke-width="4" stroke-linecap="round"/>
+  <path d="M32 32 L 32 10" stroke="#10b981" stroke-width="4" stroke-linecap="round"/>
+  <path d="M42 28 L 42 4" stroke="#10b981" stroke-width="4" stroke-linecap="round"/>
+  <path d="M38 8 L 42 2 L 46 8" fill="#10b981"/>
+</svg>
