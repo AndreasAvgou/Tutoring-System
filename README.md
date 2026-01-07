@@ -42,22 +42,35 @@ Built with a focus on security and user experience, the system enables education
 ```text
 Tutoring-Management-System/
 │
-├── backend/                 
+├── backend/                  
 │   ├── src/
-│   │   ├── main/java/       (Controllers, Services, Entities, Security Config)
-│   │   ├── main/resources/  (application.properties, schema.sql)
-│   │   └── test/            (JUnit tests)
-│   ├── pom.xml              (Maven dependencies)
-│   ├── mvnw                 (Maven Wrapper for Windows/Linux)
-│   ├── mvnw.cmd             (Maven Wrapper for Windows)
-│   
-├── frontend/               
-│   ├── src/                 (Components and App.jsx)
-│   ├── public/              (Images, logos)
-│   ├── package.json         (React Frameworks)
-│   ├── vite.config.js       (Config Vite)
-│   
-└── README.md              
+│   │   ├── main/java/        (Controllers, Services, Entities, Security Config)
+│   │   ├── main/resources/   (application.properties, schema.sql)
+│   │   └── test/             (JUnit tests)
+│   ├── .gitignore            (Backend ignore rules)
+│   ├── mvnw                  (Maven Wrapper for Linux/macOS)
+│   ├── mvnw.cmd              (Maven Wrapper for Windows)
+│   └── pom.xml               (Project Object Model & Dependencies)
+│
+├── frontend/
+│   ├── public/               (Tutoring-Management-System.svg)
+│   ├── src/
+│   │   ├── components/       (Reusable Logic & UI & Shadcn base components: Button, Card, etc.)
+│   │   ├── views/            (AttendanceView, CoursesView, StudentsView, TeachersView, PublicBookingPage, SettingsView)
+│   │   ├── App.jsx           (Main Logic)
+│   │   ├── main.jsx          (Entry Point)
+│   │   └── index.css         (Tailwind Styles)
+│   ├── .gitignore            (Git ignore rules)
+│   ├── components.json       (Shadcn UI Configuration)
+│   ├── eslint.config.js      (Linting Rules)
+│   ├── index.html            (HTML Entry Point)
+│   ├── jsconfig.json         (Path Mapping Configuration)
+│   ├── package.json          (Scripts & Dependencies)
+│   ├── package-lock.json     (Dependency Lock)
+│   ├── tailwind.config.js    (Tailwind CSS Configuration)
+│   └── vite.config.js        (Development & Build Tool)
+│
+└── README.md
 ```
 
 ## Setup
@@ -105,6 +118,7 @@ The app will be available at http://localhost:5173
 | Role | Username | Password |
 | ---------- | ---------- | ---------- |
 | Administrator | admin   | admin123 |
+
 
 
 
