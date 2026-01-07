@@ -24,10 +24,10 @@ Built with a focus on security and user experience, the system enables education
 ## Tech Stack
 
 ### Backend
-* **Language**: Java 25
+* **Language**: Java 25 (LTS)
 * **Framework**: Spring Boot 4.0.1
 * **Security**: Spring Security (Basic Auth + BCrypt)
-* **Database**: PostgreSQL 16+
+* **Database**: PostgreSQL 18+
 * **Persistence**: Spring Data JPA / Hibernate
 * **Testing**: JUnit 5, Mockito
 
@@ -118,6 +118,7 @@ The app will be available at http://localhost:5173
 | Role | Username | Password |
 | ---------- | ---------- | ---------- |
 | Administrator | admin   | admin123 |
+
 
 
 
