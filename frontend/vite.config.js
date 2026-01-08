@@ -1,16 +1,17 @@
 import { defineConfig } from "vite"
 import react from "@vitejs/plugin-react"
+import tailwindcss from "@tailwindcss/vite" // Η νέα μέθοδος για v4
 import path from "path"
-import { fileURLToPath } from "url"
-
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = path.dirname(__filename)
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react(),
+    tailwindcss(), // Ενεργοποίηση του Tailwind
+  ],
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "./src"),
+      // Σωστό alias για Node 24 χωρίς __dirname
+      "@": path.resolve(path.dirname(new URL(import.meta.url).pathname).substring(1), "src"),
     },
   },
 })
