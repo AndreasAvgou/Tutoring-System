@@ -117,6 +117,7 @@ Open a new terminal window, navigate to the frontend directory, and start the Re
 ```powershell
 cd frontend
 npm install
+npm install @tailwindcss/vite -D
 npm run dev
 ```
 
@@ -144,11 +145,12 @@ If your CSS changes are not appearing, force Vite to rebuild the cache:
 npx vite --force
 ```
 
-### 3. Database erroe
+### 3. Database error
 
 * **Port Check**: Ensure PostgreSQL is running on port `5432` (the default).
 * **Automatic Table Creation**: You don't need to create tables manually. The backend is configured to create them automatically the first time you run the Spring Boot application.
 * **Permissions**: If you get an "Access Denied" error, double-check that the username and password in your properties file match what you set during the PostgreSQL installation.
+
 
 
 
