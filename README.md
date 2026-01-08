@@ -157,6 +157,9 @@ npx vite --force
 * **Permissions**: If you get an "Access Denied" error, double-check that the username and password in your properties file match what you set during the PostgreSQL installation.
 
 
+## License
+
+This project is licensed under the MIT License
 
 
 
