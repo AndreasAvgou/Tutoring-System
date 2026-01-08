@@ -73,7 +73,8 @@ Tutoring-Management-System/
 └── README.md
 ```
 
-## Setup
+## Setup & Installation
+
 To run this project locally, follow these steps:
 
 1. **Clone the Repository**:
@@ -82,17 +83,25 @@ To run this project locally, follow these steps:
    git clone [https://github.com/AndreasAvgou/Tutoring-Management-System.git](https://github.com/AndreasAvgou/Tutoring-Management-System.git)
    ```
    
-### Database Setup
-1. Create a **PostgreSQL** database named `tutoring_db`.
-2. Update the `application.properties` file located in `backend/src/main/resources/` with your local database credentials:
+### 1. Database Setup (PostgreSQL)
 
-    ```properties
-   spring.datasource.url=jdbc:postgresql://localhost:5432/tutoring_db
-   spring.datasource.username=your_username
-   spring.datasource.password=your_password
-   ```
+The system requires PostgreSQL (v18+) to manage data.
+1. **Download & Install**: Download PostgreSQL from the [official website](https://www.postgresql.org/download/). During installation, set a password for the default `postgres` user.
+
+2. **Create Database**: Open **pgAdmin 4** or your terminal and run the following command to create the database:
+   ```sql
+   CREATE DATABASE tutoring_db;
+    ```
+
+3. Open `backend/src/main/resources/application.properties` and update it with your local credentials:
+
+```properties
+spring.datasource.url=jdbc:postgresql://localhost:5432/tutoring_db
+spring.datasource.username=your_username (usually postgres)
+spring.datasource.password=your_password
+```
     
-### Run the Backend
+### 2. Run the Backend (Spring Boot)
 Navigate to the backend directory and start the Spring Boot application:
 
 ```bash
@@ -102,7 +111,7 @@ cd backend
 
 The API will be available at http://localhost:8080/api
 
-### Run the Frontend
+### 3. Run the Frontend (React + Vite)
 Open a new terminal window, navigate to the frontend directory, and start the React development server:
 
 ```bash
@@ -118,6 +127,7 @@ The app will be available at http://localhost:5173
 | Role | Username | Password |
 | ---------- | ---------- | ---------- |
 | Administrator | admin   | admin123 |
+
 
 
 
