@@ -129,9 +129,26 @@ The app will be available at http://localhost:5173
 | Administrator | admin   | admin123 |
 
 
+## Troubleshooting & Essential Tips 
 
+### 1. Fix Missing Tailwind Styles (Vite 7 + Tailwind v4)
+If the app loads but looks like "plain HTML" (no styling), the Tailwind compiler is likely disconnected. Run this command immediately:
 
+```powershell
+npm install @tailwindcss/vite -D
+```
+### 2. Force Cache Clear
+If your CSS changes are not appearing, force Vite to rebuild the cache:
 
+```powershell
+npx vite --force
+```
+
+### 3. Database erroe
+
+* **Port Check**: Ensure PostgreSQL is running on port `5432` (the default).
+* **Automatic Table Creation**: You don't need to create tables manually. The backend is configured to create them automatically the first time you run the Spring Boot application.
+* **Permissions**: If you get an "Access Denied" error, double-check that the username and password in your properties file match what you set during the PostgreSQL installation.
 
 
 
