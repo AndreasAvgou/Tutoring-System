@@ -97,16 +97,18 @@ The system requires PostgreSQL (v18+) to manage data.
 
 ```properties
 spring.datasource.url=jdbc:postgresql://localhost:5432/tutoring_db
-spring.datasource.username=your_username (usually postgres)
+spring.datasource.username=your_username 
 spring.datasource.password=your_password
 ```
     
 ### 2. Run the Backend (Spring Boot)
 Navigate to the backend directory and start the Spring Boot application:
 
-```powershell
+ ```powershell
 cd backend
-./mvnw spring-boot:run
+```
+```powershell
+mvn spring-boot:run
 ```
 
 The API will be available at http://localhost:8080/api
@@ -117,6 +119,8 @@ Open a new terminal window, navigate to the frontend directory, and start the Re
 ```powershell
 cd frontend
 npm install
+```
+```powershell
 npm install @tailwindcss/vite -D
 npm run dev
 ```
@@ -133,7 +137,7 @@ The app will be available at http://localhost:5173
 ## Troubleshooting & Essential Tips 
 
 ### 1. Fix Missing Tailwind Styles (Vite 7 + Tailwind v4)
-If the app loads but looks like "plain HTML" (no styling), the Tailwind compiler is likely disconnected. Run this command immediately:
+If the app loads but looks like "plain HTML" (no styling), the Tailwind compiler is likely disconnected. Run this command again:
 
 ```powershell
 npm install @tailwindcss/vite -D
@@ -150,6 +154,7 @@ npx vite --force
 * **Port Check**: Ensure PostgreSQL is running on port `5432` (the default).
 * **Automatic Table Creation**: You don't need to create tables manually. The backend is configured to create them automatically the first time you run the Spring Boot application.
 * **Permissions**: If you get an "Access Denied" error, double-check that the username and password in your properties file match what you set during the PostgreSQL installation.
+
 
 
 
