@@ -79,7 +79,7 @@ To run this project locally, follow these steps:
 
 1. **Clone the Repository**:
 
-   ```bash
+   ```powershell
    git clone [https://github.com/AndreasAvgou/Tutoring-Management-System.git](https://github.com/AndreasAvgou/Tutoring-Management-System.git)
    ```
    
@@ -104,7 +104,7 @@ spring.datasource.password=your_password
 ### 2. Run the Backend (Spring Boot)
 Navigate to the backend directory and start the Spring Boot application:
 
-```bash
+```powershell
 cd backend
 ./mvnw spring-boot:run
 ```
@@ -114,7 +114,7 @@ The API will be available at http://localhost:8080/api
 ### 3. Run the Frontend (React + Vite)
 Open a new terminal window, navigate to the frontend directory, and start the React development server:
 
-```bash
+```powershell
 cd frontend
 npm install
 npm run dev
@@ -149,6 +149,7 @@ npx vite --force
 * **Port Check**: Ensure PostgreSQL is running on port `5432` (the default).
 * **Automatic Table Creation**: You don't need to create tables manually. The backend is configured to create them automatically the first time you run the Spring Boot application.
 * **Permissions**: If you get an "Access Denied" error, double-check that the username and password in your properties file match what you set during the PostgreSQL installation.
+
 
 
 
