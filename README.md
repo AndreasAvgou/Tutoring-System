@@ -79,9 +79,9 @@ To run this project locally, follow these steps:
 
 1. **Clone the Repository**:
 
-   ```powershell
-   git clone [https://github.com/AndreasAvgou/Tutoring-Management-System.git](https://github.com/AndreasAvgou/Tutoring-Management-System.git)
-   ```
+```powershell
+git clone [https://github.com/AndreasAvgou/Tutoring-Management-System.git](https://github.com/AndreasAvgou/Tutoring-Management-System.git)
+```
    
 ### 1. Database Setup (PostgreSQL)
 
@@ -89,9 +89,10 @@ The system requires PostgreSQL (v18+) to manage data.
 1. **Download & Install**: Download PostgreSQL from the [official website](https://www.postgresql.org/download/). During installation, set a password for the default `postgres` user.
 
 2. **Create Database**: Open **pgAdmin 4** or your terminal and run the following command to create the database:
-   ```sql
-   CREATE DATABASE tutoring_db;
-    ```
+
+ ```sql
+ CREATE DATABASE tutoring_db;
+  ```
 
 3. Open `backend/src/main/resources/application.properties` and update it with your local credentials:
 
@@ -154,6 +155,7 @@ npx vite --force
 * **Port Check**: Ensure PostgreSQL is running on port `5432` (the default).
 * **Automatic Table Creation**: You don't need to create tables manually. The backend is configured to create them automatically the first time you run the Spring Boot application.
 * **Permissions**: If you get an "Access Denied" error, double-check that the username and password in your properties file match what you set during the PostgreSQL installation.
+
 
 
 
