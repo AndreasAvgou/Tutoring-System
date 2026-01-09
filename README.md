@@ -1,8 +1,8 @@
 # Tutoring Management System (TMS)
 
-<p align="center" width="100%">
-  <video src="https://github.com/user-attachments/assets/1770ce90-3b8c-4e7f-a40d-d48bad7e629d" width="100%" controls></video>
-</p>
+<div align="center">
+  <video src="https://github.com/user-attachments/assets/1770ce90-3b8c-4e7f-a40d-d48bad7e629d" width="80%" controls></video>
+</div>
 
 ## Project Overview
 This full-stack application is a professional solution designed to streamline the management of private tutoring services. It centralizes student records, teacher specialties, and lesson schedules into one cohesive system.
@@ -164,6 +164,7 @@ npx vite --force
 ## License
 
 This project is licensed under the MIT License
+
 
 
 
