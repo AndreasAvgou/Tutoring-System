@@ -7,6 +7,7 @@
 </p>
 
 ## Project Overview
+
 This full-stack application is a professional solution designed to streamline the management of private tutoring services. It centralizes student records, teacher specialties, and lesson schedules into one cohesive system.
 
 Built with a focus on security and user experience, the system enables educational organizations to maintain accurate data and improve communication between staff and parents.
@@ -162,10 +163,28 @@ npx vite --force
 * **Automatic Table Creation**: You don't need to create tables manually. The backend is configured to create them automatically the first time you run the Spring Boot application.
 * **Permissions**: If you get an "Access Denied" error, double-check that the username and password in your properties file match what you set during the PostgreSQL installation.
 
+### 4. Apache Maven & Java Environment Variables
+
+If you see an error like `'mvn' is not recognized` or Maven fails to start, you need to add Maven and Java to your system's Environment Variables:
+
+1. **Set JAVA_HOME**:
+   - Ensure you have **JDK 25** installed.
+   - Add a new System Variable: `JAVA_HOME` with the path to your JDK folder (e.g., `C:\Program Files\Java\jdk-25`).
+2. **Configure Path Variable**:
+   - Find the **Path** variable in System Variables and click **Edit**.
+   - Add the path to your Apache Maven `bin` folder (e.g., `C:\apache-maven\bin`).
+   - Add the path to your JDK `bin` folder (e.g., `%JAVA_HOME%\bin`).
+3. **Verify**: Open a new terminal and type:
+
+   ```powershell
+   mvn -version
+   java -version
+    ```
 
 ## License
 
-This project is licensed under the MIT License
+This application is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
 
 
 
