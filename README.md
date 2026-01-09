@@ -1,19 +1,33 @@
-# Tutoring Management System (TMS)
 
-<p align="center" width="100%">
+<div align="center">
+  
+  <img src="https://github.com/user-attachments/assets/e8bbcff9-4201-4149-b298-e893ae0ddc84" alt="Tutoring-Management-System" width="30%">
 
-  <video src="https://github.com/user-attachments/assets/1770ce90-3b8c-4e7f-a40d-d48bad7e629d" width="100%" controls></video>
+  # Tutoring Management System (TMS)
 
-</p>
+  
+  <p>
+    <img src="https://img.shields.io/badge/Java-25-orange?style=for-the-badge&logo=openjdk&logoColor=white" alt="Java"/>
+    <img src="https://img.shields.io/badge/Spring_Boot-4.0.1-brightgreen?style=for-the-badge&logo=springboot&logoColor=white" alt="Spring Boot"/>
+    <img src="https://img.shields.io/badge/PostgreSQL-18+-blue?style=for-the-badge&logo=postgresql&logoColor=white" alt="PostgreSQL"/>
+    <img src="https://img.shields.io/badge/React-18+-61DAFB?style=for-the-badge&logo=react&logoColor=black" alt="React"/>
+    <a href="https://github.com/AndreasAvgou/Tutoring-Management-System/blob/main/LICENSE">
+      <img src="https://img.shields.io/badge/license-MIT-purple?style=for-the-badge" alt="License"/>
+    </a>
+  </p>
 
-## Project Overview
+  <video src="https://github.com/user-attachments/assets/1770ce90-3b8c-4e7f-a40d-d48bad7e629d" width="750" controls></video>
+
+</div>
+
+## 🌟 Overview
 
 This full-stack application is a professional solution designed to streamline the management of private tutoring services. It centralizes student records, teacher specialties, and lesson schedules into one cohesive system.
 
 Built with a focus on security and user experience, the system enables educational organizations to maintain accurate data and improve communication between staff and parents.
 
 
-## Key Features & Requirements
+## 📘 Features & Requirements
 
 * **Advanced Dashboard**: Dynamic charts providing a statistical overview of students, teachers, and active courses.
 * **Role-Based Access Control (RBAC)**:
@@ -28,7 +42,7 @@ Built with a focus on security and user experience, the system enables education
 * **Attendance Tracking**: Digital attendance logs with detailed historical reports for every student.
 * **Modern UI/UX**: Responsive design built with **Tailwind CSS**, featuring **Shadcn UI** components and real-time **Sonner** notifications.
  
-## Tech Stack
+## 🧰 Tech Stack
 
 ### Backend
 * **Language**: Java 25 (LTS)
@@ -44,7 +58,7 @@ Built with a focus on security and user experience, the system enables education
 * **Icons**: Lucide React
 * **API Client**: Axios
 
-## Project Structure
+## 🗂 Structure
 
 ```text
 Tutoring-Management-System/
@@ -80,17 +94,17 @@ Tutoring-Management-System/
 └── README.md
 ```
 
-## Setup & Installation
+## 🚀 Setup & Installation
 
 To run this project locally, follow these steps:
 
-1. **Clone the Repository**:
+**Clone the Repository**:
 
 ```powershell
 git clone [https://github.com/AndreasAvgou/Tutoring-Management-System.git](https://github.com/AndreasAvgou/Tutoring-Management-System.git)
 ```
    
-### 1. Database Setup (PostgreSQL)
+### 1️⃣ Database Setup (PostgreSQL)
 
 The system requires PostgreSQL (v18+) to manage data.
 1. **Download & Install**: Download PostgreSQL from the [official website](https://www.postgresql.org/download/). During installation, set a password for the default `postgres` user.
@@ -109,7 +123,7 @@ spring.datasource.username=your_username
 spring.datasource.password=your_password
 ```
     
-### 2. Run the Backend (Spring Boot)
+### 2️⃣ Run the Backend (Spring Boot)
 Navigate to the backend directory and start the Spring Boot application:
 
  ```powershell
@@ -121,7 +135,7 @@ mvn spring-boot:run
 
 The API will be available at http://localhost:8080/api
 
-### 3. Run the Frontend (React + Vite)
+### 3️⃣ Run the Frontend (React + Vite)
 Open a new terminal window, navigate to the frontend directory, and start the React development server:
 
 ```powershell
@@ -142,7 +156,7 @@ The app will be available at http://localhost:5173
 | Administrator | admin   | admin123 |
 
 
-## Troubleshooting & Essential Tips 
+## 💡 Troubleshooting 
 
 ### 1. Fix Missing Tailwind Styles (Vite 7 + Tailwind v4)
 If the app loads but looks like "plain HTML" (no styling), the Tailwind compiler is likely disconnected. Run this command again:
@@ -181,9 +195,10 @@ If you see an error like `'mvn' is not recognized` or Maven fails to start, you 
    java -version
     ```
 
-## License
+## 📜 License
 
 This application is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
 
 
 
