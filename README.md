@@ -5,7 +5,6 @@
 
   # Tutoring Management System (TMS)
 
-  
   <p>
     <img src="https://img.shields.io/badge/Java-25-orange?style=for-the-badge&logo=openjdk&logoColor=white" alt="Java"/>
     <img src="https://img.shields.io/badge/Spring_Boot-4.0.1-brightgreen?style=for-the-badge&logo=springboot&logoColor=white" alt="Spring Boot"/>
@@ -198,6 +197,7 @@ If you see an error like `'mvn' is not recognized` or Maven fails to start, you 
 ## 📜 License
 
 This application is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
 
 
 
