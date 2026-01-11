@@ -123,6 +123,7 @@ spring.datasource.password=your_password
 ```
     
 ### 2️⃣ Run the Backend (Spring Boot)
+
 Navigate to the backend directory and start the Spring Boot application:
 
  ```powershell
@@ -135,6 +136,7 @@ mvn spring-boot:run
 The API will be available at http://localhost:8080/api
 
 ### 3️⃣ Run the Frontend (React + Vite)
+
 Open a new terminal window, navigate to the frontend directory, and start the React development server:
 
 ```powershell
@@ -197,6 +199,7 @@ If you see an error like `'mvn' is not recognized` or Maven fails to start, you 
 ## 📜 License
 
 This application is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
 
 
 
