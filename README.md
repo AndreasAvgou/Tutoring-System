@@ -150,8 +150,6 @@ npm run dev
 
 The app will be available at http://localhost:5173
 
-
-
 | Role | Username | Password |
 | ---------- | ---------- | ---------- |
 | Administrator | admin   | admin123 |
@@ -199,6 +197,7 @@ If you see an error like `'mvn' is not recognized` or Maven fails to start, you 
 ## 📜 License
 
 This application is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
 
 
 
