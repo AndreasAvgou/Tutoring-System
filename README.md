@@ -3,7 +3,7 @@
   
   <img src="https://github.com/user-attachments/assets/e8bbcff9-4201-4149-b298-e893ae0ddc84" alt="Tutoring-Management-System" width="30%">
 
-  # Tutoring Management System (TMS)
+  # Tutoring System 
 
   <p>
     <img src="https://img.shields.io/badge/Java-25-orange?style=for-the-badge&logo=openjdk&logoColor=white" alt="Java"/>
@@ -197,6 +197,7 @@ If you see an error like `'mvn' is not recognized` or Maven fails to start, you 
 ## 📜 License
 
 This application is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
 
 
 
