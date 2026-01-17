@@ -60,7 +60,7 @@ Built with a focus on security and user experience, the system enables education
 ## 🗂 Structure
 
 ```text
-Tutoring-Management-System/
+Tutoring-System/
 │
 ├── backend/                  
 │   ├── src/
@@ -197,6 +197,7 @@ If you see an error like `'mvn' is not recognized` or Maven fails to start, you 
 ## 📜 License
 
 This application is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
 
 
 
