@@ -15,8 +15,6 @@
     </a>
   </p>
 
-  <video src="https://github.com/user-attachments/assets/1770ce90-3b8c-4e7f-a40d-d48bad7e629d" width="750" controls></video>
-
 </div>
 
 ## 🌟 Overview
