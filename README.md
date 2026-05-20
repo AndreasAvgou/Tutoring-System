@@ -17,14 +17,14 @@
 
 </div>
 
-## 🌟 Overview
+### 🌟 Overview
 
 This full-stack application is a professional solution designed to streamline the management of private tutoring services. It centralizes student records, teacher specialties, and lesson schedules into one cohesive system.
 
 Built with a focus on security and user experience, the system enables educational organizations to maintain accurate data and improve communication between staff and parents.
 
 
-## 📘 Features & Requirements
+### 📘 Features & Requirements
 
 * **Advanced Dashboard**: Dynamic charts providing a statistical overview of students, teachers, and active courses.
 * **Role-Based Access Control (RBAC)**:
@@ -39,9 +39,9 @@ Built with a focus on security and user experience, the system enables education
 * **Attendance Tracking**: Digital attendance logs with detailed historical reports for every student.
 * **Modern UI/UX**: Responsive design built with **Tailwind CSS**, featuring **Shadcn UI** components and real-time **Sonner** notifications.
  
-## 🧰 Tech Stack
+### 🧰 Tech Stack
 
-### Backend
+#### Backend
 * **Language**: Java 25 (LTS)
 * **Framework**: Spring Boot 4.0.1
 * **Security**: Spring Security (Basic Auth + BCrypt)
@@ -49,13 +49,13 @@ Built with a focus on security and user experience, the system enables education
 * **Persistence**: Spring Data JPA / Hibernate
 * **Testing**: JUnit 5, Mockito
 
-### Frontend
+#### Frontend
 * **Library**: React.js 18+ (Vite)
 * **Styling**: Tailwind CSS, Shadcn UI
 * **Icons**: Lucide React
 * **API Client**: Axios
 
-## 🗂 Structure
+### 🗂 Structure
 
 ```text
 Tutoring-System/
@@ -91,7 +91,7 @@ Tutoring-System/
 └── README.md
 ```
 
-## 🚀 Setup & Installation
+### 🚀 Setup & Installation
 
 To run this project locally, follow these steps:
 
@@ -101,7 +101,7 @@ To run this project locally, follow these steps:
 git clone [https://github.com/AndreasAvgou/Tutoring-Management-System.git](https://github.com/AndreasAvgou/Tutoring-Management-System.git)
 ```
    
-### 1️⃣ Database Setup (PostgreSQL)
+#### 1️⃣ Database Setup (PostgreSQL)
 
 The system requires PostgreSQL (v18+) to manage data.
 1. **Download & Install**: Download PostgreSQL from the [official website](https://www.postgresql.org/download/). During installation, set a password for the default `postgres` user.
@@ -120,7 +120,7 @@ spring.datasource.username=your_username
 spring.datasource.password=your_password
 ```
     
-### 2️⃣ Run the Backend (Spring Boot)
+#### 2️⃣ Run the Backend (Spring Boot)
 
 Navigate to the backend directory and start the Spring Boot application:
 
@@ -133,7 +133,7 @@ mvn spring-boot:run
 
 The API will be available at http://localhost:8080/api
 
-### 3️⃣ Run the Frontend (React + Vite)
+#### 3️⃣ Run the Frontend (React + Vite)
 
 Open a new terminal window, navigate to the frontend directory, and start the React development server:
 
@@ -153,28 +153,28 @@ The app will be available at http://localhost:5173
 | Administrator | admin   | admin123 |
 
 
-## 💡 Troubleshooting 
+### 💡 Troubleshooting 
 
-### 1. Fix Missing Tailwind Styles (Vite 7 + Tailwind v4)
+#### 1. Fix Missing Tailwind Styles (Vite 7 + Tailwind v4)
 If the app loads but looks like "plain HTML" (no styling), the Tailwind compiler is likely disconnected. Run this command again:
 
 ```powershell
 npm install @tailwindcss/vite -D
 ```
-### 2. Force Cache Clear
+#### 2. Force Cache Clear
 If your CSS changes are not appearing, force Vite to rebuild the cache:
 
 ```powershell
 npx vite --force
 ```
 
-### 3. Database error
+#### 3. Database error
 
 * **Port Check**: Ensure PostgreSQL is running on port `5432` (the default).
 * **Automatic Table Creation**: You don't need to create tables manually. The backend is configured to create them automatically the first time you run the Spring Boot application.
 * **Permissions**: If you get an "Access Denied" error, double-check that the username and password in your properties file match what you set during the PostgreSQL installation.
 
-### 4. Apache Maven & Java Environment Variables
+#### 4. Apache Maven & Java Environment Variables
 
 If you see an error like `'mvn' is not recognized` or Maven fails to start, you need to add Maven and Java to your system's Environment Variables:
 
@@ -192,7 +192,7 @@ If you see an error like `'mvn' is not recognized` or Maven fails to start, you 
    java -version
     ```
 
-## 📜 License
+### 📜 License
 
 This application is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
